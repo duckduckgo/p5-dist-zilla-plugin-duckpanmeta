@@ -10,6 +10,7 @@ use namespace::autoclean;
 use Dist::Zilla::File::FromCode;
 use JSON::MaybeXS;
 use Class::Load ':all';
+use Carp qw( croak );
 
 ### EVIL WORKAROUND
 use File::Spec;
@@ -39,7 +40,9 @@ sub gather_files {
 					my %data;
 					eval {
 						try_load_class($class) unless is_class_loaded($class);
-						if ($INC{$file_without_lib} ne $file->name) {
+						if (!defined $INC{$file_without_lib}) {
+							warn "Class ".$class." failed to load!";
+						} elsif ($INC{$file_without_lib} ne $file->name) {
 							warn "Class ".$class." already loaded from another location, can't parse it.";
 						} else {
 							if ($class->can('does')) {
