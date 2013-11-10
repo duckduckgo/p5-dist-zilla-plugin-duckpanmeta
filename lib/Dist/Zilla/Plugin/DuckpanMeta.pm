@@ -1,5 +1,5 @@
 package Dist::Zilla::Plugin::DuckpanMeta;
-# ABSTRACT: DistZilla Plugin for generating 
+# ABSTRACT: DistZilla plugin for gathering DuckPAN related (so far only DDG related) meta information
 
 use Moose;
 use Moose::Autobox;
@@ -79,4 +79,27 @@ sub gather_files {
 __PACKAGE__->meta->make_immutable;
 1;
 
-1;
+=encoding utf8
+
+=head1 SYNOPSIS
+
+In dist.ini:
+
+  [DuckpanMeta]
+  
+=head1 DESCRIPTION
+
+=head1 SUPPORT
+
+IRC
+
+  Join #duckduckgo on irc.freenode.net. Highlight Getty for fast reaction :).
+
+Repository
+
+  http://github.com/duckduckgo/p5-dist-zilla-plugin-duckpanmeta
+  Pull request and additional contributors are welcome
+ 
+Issue Tracker
+
+  http://github.com/duckduckgo/p5-dist-zilla-plugin-duckpanmeta/issues
